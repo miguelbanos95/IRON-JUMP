@@ -1,3 +1,38 @@
 canvas {
     border: 1px dotted black;
+    background-image: linear-gradient(rgba(255,100,150,0.6),rgba(20,100,255,0.3)) , url('../../images/278c8023527cf8a4cc12e033e20b1433.gif');
+  }
+
+  #canvas-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  #pressStart{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
+  }
+  
+  #main-tittle{
+    
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #city-silhouette{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
   }

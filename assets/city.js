@@ -8,7 +8,7 @@ class City {
         this.height = this.ctx.canvas.height
 
         this.img = new Image();
-        this.img.src = "/images/4016cd0da5dd95f171edbdb6dbd83806.gif"
+        this.img.src = "images/4016cd0da5dd95f171edbdb6dbd83806.gif"
         this.img.isReady = false
         this.img.onload = () => {
             this.img.isReady = true

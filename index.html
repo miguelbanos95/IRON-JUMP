@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,27 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <title>ProjectGame</title>
 </head>
-<body>
-  <canvas width="540" height="810" id="game"></canvas>
 
-  <div>
-    <button id="start"> Press Start</button>
+<body>
+  <div id="canvas-wrapper">
+    <canvas width="540" height="700" id="game"></canvas>
+    
+    <div>
+      <img id = 'city-silhouette' src="./images/city silhouetes/63611.png">
+      <img id = 'main-tittle' src="./images/text/cooltext400062335033117.png">
+
+
+      <div id="start"> <img id = 'pressStart' src="images/city silhouetes/image01.gif"></div>
+    </div>
   </div>
 
-  <script src="assets/city.js"></script>
+  <!--<script src="assets/city.js"></script>-->
+  <script src="assets/score.js"></script>
+  <script src="assets/enemy.js"></script>
+  <script src="assets/obstacle.js"></script>
+  <script src="assets/ninja.js"></script>
   <script src="assets/game.js"></script>
   <script src="assets/index.js"></script>
 </body>
+
 </html>
