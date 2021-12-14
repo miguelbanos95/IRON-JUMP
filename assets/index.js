@@ -5,13 +5,15 @@ const game = new Game(ctx)
 const button = document.getElementById('start')
 const imageTitle = document.getElementById('main-tittle')
 const citySilhoutte = document.getElementById('city-silhouette')
+const author = document.getElementById('author')
+
 
 button.onclick = (e) => {
   e.stopPropagation()
-  console.log('gola');
   button.remove()
   imageTitle.remove()
   citySilhoutte.remove()
+  author.remove()
   
 
   game.startGame()

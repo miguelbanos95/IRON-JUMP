@@ -7,6 +7,8 @@ class Game {
         //this.city = new City(ctx);
         this.ninja = new Ninja(ctx);
 
+        this.ninjaSound = new Audio('sounds/yt1s.com - Naruto jumping sound effect.mp3')
+
         this.intervalId = undefined
         this.obstacles = []
         this.enemies = []
@@ -62,10 +64,14 @@ class Game {
 
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+        const canvasHeight = this.ctx.canvas.height;
+        this.obstacles = this.obstacles.filter((obstacle) => obstacle.y < canvasHeight)
+        this.enemies = this.enemies.filter(enemy => enemy.y < canvasHeight)
     }
 
     draw() {
         //this.city.draw()
+        console.log(this.enemies.length)
         this.enemies.forEach(enemy => enemy.draw())
         this.obstacles.forEach(obstacle => obstacle.draw());
         this.ninja.draw()
@@ -81,6 +87,8 @@ class Game {
 
     pressScreen() {
         this.ninja.jump()
+        this.ninjaSound.currentTime = 0
+        this.ninjaSound.play()
     }
 
     addObstacle() {

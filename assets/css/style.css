@@ -1,6 +1,6 @@
 canvas {
     border: 1px dotted black;
-    background-image: linear-gradient(rgba(255,100,150,0.6),rgba(20,100,255,0.3)) , url('../../images/278c8023527cf8a4cc12e033e20b1433.gif');
+    background-image: linear-gradient(rgba(255,100,150,0.6),rgba(20,100,255,0.3)) , url('../../images/background/278c8023527cf8a4cc12e033e20b1433.gif');
   }
 
   #canvas-wrapper {
@@ -13,7 +13,7 @@ canvas {
     width: 250px;
     height: 250px;
     position: absolute;
-    top: 60%;
+    top: 63%;
     left: 50%;
     transform: translate(-50%, -50%)
 
@@ -23,7 +23,7 @@ canvas {
     
     height: 100px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
   }
@@ -31,8 +31,16 @@ canvas {
     width: 250px;
     height: 250px;
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%)
 
+  }
+  #author{
+    position: absolute;
+    top: 93%;
+    left: 5%;
+    transform: translate(-10%, -10%);
+    font-family: "Courier New";
+    font-weight: 700
   }

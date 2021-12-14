@@ -57,7 +57,7 @@ class Ninja {
     jump() {
         if (!this.isJumping) {
             this.isLeft = !this.isLeft;
-            this.vx = 10;
+            this.vx = 10.3;
             this.vy = -14.2;
             this.isJumping = true;
         }
