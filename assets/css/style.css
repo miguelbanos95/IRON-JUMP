@@ -44,3 +44,162 @@ canvas {
     font-family: "Courier New";
     font-weight: 700
   }
+  /* #game-over{
+    visibility: hidden; 
+    position: fixed;
+  } */
+
+  #mouse{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 80%;
+    left: 48%;
+    transform: translate(-50%, -50%)
+  }
+  #controls{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Courier New";
+    font-weight: bold
+  }
+  #game-over{
+    background-image: url('../../images/game-over/gameoverscreen.png');
+    height: 300px;
+    width: 440px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #score{
+    font-family: "Courier New";
+    font-weight: 900;
+    position: absolute;
+    top: 115px
+  }
+  #score-height{
+    position: absolute;
+    margin-left: 8px;
+    top: 25%;
+    height: 70px;
+    width: 190px;
+
+  }
+
+.restart {
+  align-items: center;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "Courier New";
+  font-size: 20px;
+  font-weight: 900;
+  justify-content: center;
+  line-height: 24px;
+  margin-top: 100px;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .restart {
+    padding: 19px 32px;
+  }
+}
+
+.restart:before,
+.restart:after {
+  border-radius: 80px;
+}
+
+.restart:before {
+  background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.restart:after {
+  background-color: initial;
+  background-image: linear-gradient(#d12721 0, #350b0b 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+.restart:hover:not(:disabled):before {
+  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+}
+
+.restart:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+  opacity: 0;
+}
+
+.restart:active:not(:disabled) {
+  color: #ccc;
+}
+
+.restart:active:not(:disabled):before {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+.restart:active:not(:disabled):after {
+  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.restart:disabled {
+  cursor: default;
+  opacity: .24;
+}
+

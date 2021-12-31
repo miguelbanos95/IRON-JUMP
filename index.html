@@ -11,18 +11,30 @@
 
 <body>
   <div id="canvas-wrapper">
-    <canvas width="540" height="700" id="game"></canvas>
+    <canvas width="540" height="700" id="game">
+    </canvas>
     <h3 id ="author">© MB.CORP</h3>
-    
+    <h2 id="controls">To Jump</h2>
+    <div>
+      <img id="mouse" src="images/mouse-left-click-png.png">
+    </div>
     <div>
       <img id = 'city-silhouette' src="./images/city silhouetes/63611.png">
       <img id = 'main-tittle' src="./images/text/cooltext400062335033117.png">
 
       <div id="start"> <img id = 'pressStart' src="images/city silhouetes/image01.gif"></div>
+    
     </div>
+    <div id='game-over'> <!--USAR ESTA ETIQUETA Y PONER LA IMAGEN TABLA COMO BG  -->
+      <!-- <h1 id="scoreName"></h1> -->
+      <img id="score-height" src="./images/score/title-height.png">
+      <h2 id="score"></h1>
+      <button class="restart" role="button">PLAY AGAIN</button>
+    </div>
+
   </div>
 
-  <!--<script src="assets/city.js"></script>-->
+  <script src="assets/city.js"></script>
   <script src="assets/score.js"></script>
   <script src="assets/enemy.js"></script>
   <script src="assets/obstacle.js"></script>

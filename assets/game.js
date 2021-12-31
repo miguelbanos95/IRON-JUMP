@@ -4,44 +4,50 @@ class Game {
     constructor(ctx) {
         this.ctx = ctx;
 
-        //this.city = new City(ctx);
+        this.city = new City(ctx);
         this.ninja = new Ninja(ctx);
 
-        this.ninjaSound = new Audio('sounds/yt1s.com - Naruto jumping sound effect.mp3')
+        this.ninjaSound = new Audio('sounds/jump sound.mp3')
+        this.fallSound = new Audio('sounds/falling sound.mp3')
+        // this.introMusic = new Audio('sounds/introMusic.mp3')
+        
 
         this.intervalId = undefined
         this.obstacles = []
+
         this.enemies = []
         this.scoreTop = new Score(ctx);
 
+        this.isGameOver = false
         this.obstaclesFramesCount = 0
 
         this.score = 0
     }
 
+
     startGame() {
         if (!this.intervalId) {
             this.intervalId = setInterval(() => {
 
-                let OBSTACLES_FRAMES_RIGHT = Math.floor(Math.random() * (150 - 100)) + 100
+                if (this.obstaclesFramesCount > 20) {
+                    let OBSTACLES_FRAMES_RIGHT = Math.floor(Math.random() * (220 - 100)) + 100;
+                
+                    if (Math.floor(Math.random() * 250) === 3) {
+                        this.addObstacle()
+                    }
 
+                    if (this.obstaclesFramesCount % OBSTACLES_FRAMES_RIGHT === 0) {
+                        this.addObstacle2()
+                        this.obstaclesFramesCount = 0
+                    }
 
-                if (Math.floor(Math.random() * 250) === 3) {
-                    this.addObstacle()
-
+                    if (this.obstaclesFramesCount % OBSTACLES_FRAMES === 0) {
+                        this.addEnemy()
+                        this.obstaclesFramesCount = 0
+                    }
                 }
-                if (this.obstaclesFramesCount % OBSTACLES_FRAMES_RIGHT === 0) {
-                    this.addObstacle2()
-                    this.obstaclesFramesCount = 0
-                }
 
-                if (this.obstaclesFramesCount % OBSTACLES_FRAMES === 0) {
-                    this.addEnemy()
-                    this.obstaclesFramesCount = 0
-                }
-
-
-
+                this.score++
 
                 //clear
                 this.clear()
@@ -52,7 +58,6 @@ class Game {
                 //draw
                 this.draw()
 
-                this.score++
 
                 this.checkCollissions()
                 this.obstaclesFramesCount++
@@ -60,6 +65,7 @@ class Game {
 
             }, 1000 / 60)
         }
+        // this.musicGame.play()
     }
 
     clear() {
@@ -70,25 +76,29 @@ class Game {
     }
 
     draw() {
-        //this.city.draw()
-        console.log(this.enemies.length)
+        this.city.draw()
         this.enemies.forEach(enemy => enemy.draw())
-        this.obstacles.forEach(obstacle => obstacle.draw());
+        this.obstacles.forEach(obstacle => obstacle.draw())
         this.ninja.draw()
         this.scoreTop.draw(this.score)
     }
 
     move() {
+        this.city.move()
         this.enemies.forEach(enemy => enemy.move())
-        this.obstacles.forEach(obstacle => obstacle.move());
+        this.obstacles.forEach(obstacle => obstacle.move())
         this.ninja.move()
 
     }
 
     pressScreen() {
-        this.ninja.jump()
-        this.ninjaSound.currentTime = 0
-        this.ninjaSound.play()
+
+        if (!this.isGameOver) {
+            this.ninja.jump()
+            this.ninjaSound.currentTime = 0
+            this.ninjaSound.play()
+        }
+
     }
 
     addObstacle() {
@@ -103,7 +113,7 @@ class Game {
         )
     }
     addEnemy() {
-        console.log("addEnemy")
+
         const max = this.ctx.canvas.width - 100
         const x = Math.floor(Math.random() * (max - 60) + 60)
         this.enemies.push(
@@ -111,27 +121,35 @@ class Game {
         )
     }
     checkCollissions() {
-        const condition = this.obstacles.some(obstacle => this.ninja.collidesWith(obstacle)) || this.enemies.some(enemy => this.ninja.collidesWith(enemy))
+        const obstacleCollision = this.obstacles.some(obstacle => this.ninja.collidesWith(obstacle)) || this.enemies.some(enemy => this.ninja.collidesWith(enemy)) 
 
 
-        if (condition) {
+        if (obstacleCollision) {
             this.gameOver()
+            this.fallSound.play()
+            this.ninjaSound.muted = true
+
+
         }
     }
     gameOver() {
+
         clearInterval(this.intervalId)
 
         this.ctx.save()
+        document.getElementById('game-over').style.display = 'flex';
+        this.isGameOver = true;
 
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
 
-        this.ctx.fillStyle = 'white'
-        this.ctx.textAlign = 'center'
-        this.ctx.font = 'bold 32px sans-serif'
-        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
+        const score = document.getElementById('score') 
+        score.innerHTML = `${(this.score / 10).toFixed(1)}m`
+
+        // this.musicGame.pause()
+        // this.musicGame.currentTime = 0
 
         this.ctx.restore()
     }
-    
+
 }
