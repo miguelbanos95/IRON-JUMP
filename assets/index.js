@@ -9,22 +9,21 @@ const mouse = document.getElementById('mouse')
 const controls = document.getElementById('controls')
 const restartButton = document.getElementsByClassName('restart')
 const gameOver = document.getElementById('game-over')
-const musicGame1 = new Audio('sounds/musicGame.mp3')
-const musicGame2 = new Audio('sounds/musicGame.mp3')
-
+const musicGame = new Audio('sounds/musicGame.mp3')
 
 
 const startGame = (e) => {
+  musicGame.currentTime = 0
   gameOver.style.display = 'none'
   e.stopPropagation()
   const game = new Game(ctx)
+  musicGame.play()
   button.remove()
   imageTitle.remove()
   citySilhoutte.remove()
   author.remove()
   mouse.remove()
   controls.remove()
-  musicGame1.play()
   game.startGame()
   document.addEventListener('click', (event) => {
     game.pressScreen()
@@ -32,5 +31,7 @@ const startGame = (e) => {
 }
 
 button.onclick = startGame;
+
 restartButton[0].onclick = startGame
+
 

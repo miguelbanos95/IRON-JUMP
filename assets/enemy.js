@@ -4,10 +4,10 @@ class Enemy {
         this.x = x
         this.y = y
 
-        this.width = 50
-        this.height = 50
+        this.width = 40
+        this.height = 30
 
-        this.vy = 3.5
+        this.vy = 4
 
         this.img = new Image()
         this.img.src = 'images/SPRITES/plat_bat_spritesheet.png'

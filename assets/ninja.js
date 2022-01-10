@@ -7,8 +7,8 @@ class Ninja {
         this.maxY = 540
         this.y = this.maxY
 
-        this.width = 50
-        this.height = 70
+        this.width = 45
+        this.height = 60
 
 
         this.vx = 0
@@ -114,6 +114,7 @@ class Ninja {
            // }
         }
     }
+    //lógica del salto
     jump() {
         if (!this.isJumping) {
             this.isLeft = !this.isLeft;
@@ -122,17 +123,19 @@ class Ninja {
             this.isJumping = true;
         }
     }
+    //colisiones con obstáculos de las paredes
     collidesWith(obstacle) {
         if (
-            this.x < obstacle.x + obstacle.width  &&
-            this.x + this.width > obstacle.x &&
-            this.y < obstacle.y + obstacle.height &&
-            this.y + this.height > obstacle.y
+            this.x < obstacle.x + obstacle.width &&
+            this.x + this.width > obstacle.x  &&
+            this.y < obstacle.y + obstacle.height && 
+            this.y + this.height >= obstacle.y 
         ) {
             return true;
         }
         return false
     }
+    //colisiones con los enemigos
     collidesWith(enemy) {
         if (
             this.x < enemy.x + enemy.width  &&

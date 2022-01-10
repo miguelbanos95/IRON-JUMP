@@ -2,13 +2,17 @@ class Obstacle {
     constructor(ctx, y, position = 'left'){
         this.ctx = ctx
 
-        this.x = (position === 'left') ? 30 : 460
+        //obstaculos a la izq. o a la der.
+
+        this.x = (position === 'left') ? 10 : 460
         this.y = y
 
         this.vy = 3.2
-        //- this.height
 
         this.img = new Image()
+
+        //saca aleatoriamente un balcon o un aire acond.
+
         this.isBalcony = Math.random() > 0.5 
         this.img.src = this.isBalcony ? "images/SPRITES/obstacles/balcony.png" : 'images/SPRITES/obstacles/air conditioner.png'
 
@@ -18,7 +22,8 @@ class Obstacle {
         }
 
         this.width = 50
-        this.height = 55
+        this.height = 30
+
 
         this.horizontalFrames = this.isBalcony ? 1 : 2
         this.verticalFrames = 1
@@ -42,8 +47,8 @@ class Obstacle {
                 this.img.height * this.verticalFrames,
                 this.x,
                 this.y,
-                50,
-                50
+                70,
+                45
             )
         }
 

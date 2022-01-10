@@ -1,4 +1,4 @@
-const OBSTACLES_FRAMES = 120
+const OBSTACLES_FRAMES = 140
 
 class Game {
     constructor(ctx) {
@@ -9,8 +9,6 @@ class Game {
 
         this.ninjaSound = new Audio('sounds/jump sound.mp3')
         this.fallSound = new Audio('sounds/falling sound.mp3')
-        // this.introMusic = new Audio('sounds/introMusic.mp3')
-        
 
         this.intervalId = undefined
         this.obstacles = []
@@ -24,23 +22,26 @@ class Game {
         this.score = 0
     }
 
-
     startGame() {
+        
         if (!this.intervalId) {
             this.intervalId = setInterval(() => {
-
-                if (this.obstaclesFramesCount > 20) {
-                    let OBSTACLES_FRAMES_RIGHT = Math.floor(Math.random() * (220 - 100)) + 100;
                 
+                //spawn de enemigos/obstáculos
+                if (this.obstaclesFramesCount > 15) {
+
+                    const OBSTACLES_FRAMES_RIGHT = 140;
+
+                    //genera los obstáculos de la izq. de forma aleatoria
                     if (Math.floor(Math.random() * 250) === 3) {
                         this.addObstacle()
                     }
-
+                    //genera los obstáculos de la der. cada x frames
                     if (this.obstaclesFramesCount % OBSTACLES_FRAMES_RIGHT === 0) {
                         this.addObstacle2()
                         this.obstaclesFramesCount = 0
                     }
-
+                    //genera los enemigos cada x frames
                     if (this.obstaclesFramesCount % OBSTACLES_FRAMES === 0) {
                         this.addEnemy()
                         this.obstaclesFramesCount = 0
@@ -65,7 +66,7 @@ class Game {
 
             }, 1000 / 60)
         }
-        // this.musicGame.play()
+        
     }
 
     clear() {
@@ -91,8 +92,10 @@ class Game {
 
     }
 
-    pressScreen() {
+    //lógica de interfaz
 
+    pressScreen() {
+        
         if (!this.isGameOver) {
             this.ninja.jump()
             this.ninjaSound.currentTime = 0
@@ -122,7 +125,7 @@ class Game {
     }
     checkCollissions() {
         const obstacleCollision = this.obstacles.some(obstacle => this.ninja.collidesWith(obstacle)) || this.enemies.some(enemy => this.ninja.collidesWith(enemy)) 
-
+        
 
         if (obstacleCollision) {
             this.gameOver()
@@ -145,10 +148,7 @@ class Game {
 
         const score = document.getElementById('score') 
         score.innerHTML = `${(this.score / 10).toFixed(1)}m`
-
-        // this.musicGame.pause()
-        // this.musicGame.currentTime = 0
-
+        
         this.ctx.restore()
     }
 
