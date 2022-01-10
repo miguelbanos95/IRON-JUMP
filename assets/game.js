@@ -7,8 +7,8 @@ class Game {
         this.city = new City(ctx);
         this.ninja = new Ninja(ctx);
 
-        this.ninjaSound = new Audio('sounds/jump sound.mp3')
-        this.fallSound = new Audio('sounds/falling sound.mp3')
+        this.ninjaSound = new Audio('sounds/jump-sound.mp3')
+        this.fallSound = new Audio('sounds/falling-sound.mp3')
 
         this.intervalId = undefined
         this.obstacles = []

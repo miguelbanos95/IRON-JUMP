@@ -14,7 +14,7 @@ class Obstacle {
         //saca aleatoriamente un balcon o un aire acond.
 
         this.isBalcony = Math.random() > 0.5 
-        this.img.src = this.isBalcony ? "images/SPRITES/obstacles/balcony.png" : 'images/SPRITES/obstacles/air conditioner.png'
+        this.img.src = this.isBalcony ? "images/SPRITES/obstacles/balcony.png" : 'images/SPRITES/obstacles/air-conditioner.png'
 
         this.img.isReady = false
         this.img.onload = () => {
